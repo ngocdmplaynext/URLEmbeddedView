@@ -23,10 +23,14 @@ public final class OGData: NSManagedObject {
                                    managedObjectContext: NSManagedObjectContext = OGDataCacheManager.shared.updateManagedObjectContext,
                                    completion: @escaping (OGData) -> ()) {
         fetchOGData(url: url, managedObjectContext: managedObjectContext) { ogData in
+            let newOGData = NSEntityDescription.insertNewObject(forEntityName: "OGData", into: managedObjectContext) as! OGData
             if let ogData = ogData {
+                newOGData.imageUrl = ogData.imageUrl
+                newOGData.pageDescription = ogData.pageDescription
+                newOGData.pageTitle = ogData.pageTitle
+                newOGData.pageType = ogData.pageType
                 completion(ogData)
             }
-            let newOGData = NSEntityDescription.insertNewObject(forEntityName: "OGData", into: managedObjectContext) as! OGData
             let date = Date()
             newOGData.createDate = date
             newOGData.updateDate = date
