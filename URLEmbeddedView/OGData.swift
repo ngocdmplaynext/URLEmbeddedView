@@ -29,6 +29,7 @@ public final class OGData: NSManagedObject {
                 newOGData.pageDescription = ogData.pageDescription
                 newOGData.pageTitle = ogData.pageTitle
                 newOGData.pageType = ogData.pageType
+                newOGData.siteName = ogData.siteName
                 completion(ogData)
             }
             let date = Date()
