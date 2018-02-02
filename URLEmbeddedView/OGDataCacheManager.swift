@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-final class OGDataCacheManager: NSObject {
+public final class OGDataCacheManager: NSObject {
     @objc(sharedInstance)
-    static let shared = OGDataCacheManager()
+    public static let shared = OGDataCacheManager()
     
     private struct CacheKey {
         static let timeOfExpirationForOGData = "TimeOfExpirationForOGDataCache"
@@ -60,7 +60,7 @@ final class OGDataCacheManager: NSObject {
         return managedObjectContext
     }()
     
-    lazy var updateManagedObjectContext: NSManagedObjectContext = {
+    public lazy var updateManagedObjectContext: NSManagedObjectContext = {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.parent = self.mainManagedObjectContext
         return managedObjectContext
